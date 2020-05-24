@@ -22,6 +22,8 @@ jobs:
           pwd
           ls -la
           ls -la bin
+          ls -la vendor
+          ls -la vendor/bin
 
       - name: Create database
         run: ./bin/console doctrine:database:create
@@ -30,4 +32,4 @@ jobs:
         run: ./bin/console doctrine:migrations:migrate
 
       - name: Run tests
-        run: ./bin/phpunit -c phpunit.xml
+        run: ./vendor/bin/phpunit -c phpunit.xml
