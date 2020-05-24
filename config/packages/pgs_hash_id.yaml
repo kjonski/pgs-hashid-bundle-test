@@ -1,0 +1,6 @@
+pgs_hash_id:
+  converter:
+    hashids:
+      salt: 'josaphat'
+      min_hash_length: 13
+      alphabet: '0123456789abcdefghijklmnopqrstuvwxyz'
