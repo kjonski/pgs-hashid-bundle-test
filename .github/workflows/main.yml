@@ -17,7 +17,7 @@ jobs:
         run: composer self-update
 
       - name: Install dependencies
-        run: composer install
+        run: composer install --dev
 
       - name: Create database
         run: ./bin/console doctrine:database:create
