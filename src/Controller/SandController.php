@@ -36,8 +36,11 @@ class SandController extends AbstractController
             'url-demo-2-parameters-1-encoded' => $this->createCase('demo-2-parameters-1', ['id' => 10, 'id2' => 5]),
             'url-demo-2-parameters-2-encoded' => $this->createCase('demo-2-parameters-2', ['id' => 10, 'id2' => 5]),
             'url-demo-with-param-converter' => $this->createCase('demo_pc', ['note' => $note->getId()]),
-            'url-hotel-en' => $this->createCase('hotel_show.en', ['hotel' => $hotel->getId()]),
-            'url-hotel-fr' => $this->createCase('hotel_show.fr', ['hotel' => $hotel->getId()]),
+            'url-hotel-en-direct' => $this->createCase('hotel_show.en', ['hotel' => $hotel->getId()]),
+            'url-hotel-fr-direct' => $this->createCase('hotel_show.fr', ['hotel' => $hotel->getId()]),
+            'url-hotel-en-locale' => $this->createCase('hotel_show', ['hotel' => $hotel->getId(), '_locale' => 'en']),
+            'url-hotel-fr-locale' => $this->createCase('hotel_show', ['hotel' => $hotel->getId(), '_locale' => 'fr']),
+            'url-hotel-without-locale' => $this->createCase('hotel_show', ['hotel' => $hotel->getId()]),
         ]);
     }
 
