@@ -123,4 +123,17 @@ class SandController extends AbstractController
     {
         return new Response(print_r($hotel, true));
     }
+
+    /**
+     * @Route("demo-twig-template", name="demo_template")
+     * @param Request $request
+     */
+    public function demoLocalizedTwigTemplate(Request $request)
+    {
+        $m = $this->getDoctrine()->getManager();
+        $hotelId = 8;
+        $hotel = $m->find(Hotel::class, $hotelId) ?? Hotel::create($hotelId, 'Hotel 52');
+        $view = $this->renderView('internationalized.html.twig', ['hotel' => $hotel]);
+        return new Response($view);
+    }
 }

@@ -27,4 +27,27 @@ class SandControllerTest extends WebTestCase
             $this->assertEquals(200, $client->getResponse()->getStatusCode());
         }
     }
+
+    public function testGenerateUrlsInTwigTemplate()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/demo-twig-template');
+
+        $this->assertTrue(
+            $client->getResponse()->headers->contains(
+                'Content-Type',
+                'text/html; charset=UTF-8'
+            ),
+            "Content type is text/html"
+        );
+
+        $links = $crawler->filter('a')->links();
+
+        foreach ($links as $link) {
+            $client->click($link);
+
+            $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        }
+    }
 }

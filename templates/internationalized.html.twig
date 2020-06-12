@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% set locales = ['en', 'fr'] %}
+<h3>With locale passed</h3>
+<ul>
+    {% for locale in locales %}
+        {% set demo_url = path('hotel_show', app.request.get('_route_params')|merge({'_locale': locale, 'hotel': hotel.id})) %}
+        <li>
+            <a href="{{ demo_url }}">
+                {{ locale }} - {{ demo_url }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h3>With locale concatenated with route</h3>
+<ul>
+    {% for locale in locales %}
+        {% set demo_url = path('hotel_show.'~locale, app.request.get('_route_params')|merge({'hotel': hotel.id})) %}
+        <li>
+            <a href="{{ demo_url }}">
+                {{ locale }} - {{ demo_url }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
